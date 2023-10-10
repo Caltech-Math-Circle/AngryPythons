@@ -1,3 +1,11 @@
+"""
+# run with
+python pyangrybirds.py
+
+# make sure you already have pygame installed, via
+# pip install pygame
+"""
+
 import pygame
 import math
 import sys
@@ -41,13 +49,7 @@ def first_derivative(start_pos, initial_velocity, angle, time):
     vx = initial_velocity * math.cos(math.radians(angle))
     vy = initial_velocity * math.sin(math.radians(angle)) - g * time
     return vx, vy
-
-# # Define a function to calculate the slope of the tangent at a point on the trajectory
-# def tangent_slope(start_pos, initial_velocity, angle, time):
-#     g = 9.81
-#     vx = initial_velocity * math.cos(math.radians(angle))
-#     vy = -initial_velocity * math.sin(math.radians(angle)) - g * time
-#     return vy / vx    
+  
 
 # Main game loop
 running = True
@@ -86,13 +88,6 @@ while running:
         end_y = pos[1] - 1 * derivative[1] # remember it's pixel space?
         pygame.draw.line(screen, BLUE, pos, (end_x, end_y))
 
-
-        # slope = tangent_slope(start_pos, initial_velocity, angle, time)
-        # x1 = pos[0] - 20
-        # y1 = pos[1] - 20 * slope
-        # x2 = pos[0] + 20
-        # y2 = pos[1] + 20 * slope
-        # pygame.draw.line(screen, BLUE, (x1, y1), (x2, y2))
 
         t += time_step
         pygame.display.flip()

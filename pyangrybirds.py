@@ -16,6 +16,9 @@ WHITE = (255, 255, 255)
 BLUE = (0, 0, 255)
 GREEN = (0, 255, 0)
 
+snake_icon = pygame.image.load('snake_icon.png')
+snake_icon = pygame.transform.scale(snake_icon, (50, 30)) 
+
 # Define a function to calculate a parabolic trajectory
 def parabolic_trajectory(start_pos, initial_velocity, angle, time):
     g = 9.81  # acceleration due to gravity
@@ -70,6 +73,12 @@ while running:
         time = t / 10
         pos = parabolic_trajectory(start_pos, initial_velocity, angle, time)
         pygame.draw.circle(screen, BLUE, pos, 5)
+
+        # Calculate the position for the snake icon
+        icon_rect = snake_icon.get_rect(center=pos)
+
+        # # Draw the snake icon
+        screen.blit(snake_icon, icon_rect)
 
         derivative = first_derivative(start_pos, initial_velocity, angle, time)
         # pdb.set_trace();
